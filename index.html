@@ -172,7 +172,7 @@
                 </div>
 
 
-            <div class="row row-content">
+                    <div class="row row-content">
                     <div class="col">
                             <div id="mycarousel" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner" role="listbox">
@@ -220,10 +220,14 @@
                         </a>
                         <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
                             <span class="carousel-control-next-icon"></span>
-                        </a>                        
+                        </a> 
+                        <div class="btn-group" id="carouselButton">
+                            <button class="btn btn-danger btn-sm" id="carousel-button">
+                                <span class="fa fa-pause"></span>
+                            </button>
                     </div>
                 </div>
-    
+                </div>
 
             <ol class="col-12 breadcrumb">
                     <li class="breadcrumb-item">Home</li>
@@ -310,7 +314,7 @@
                        </address>
                 </div>
                 <div class="col col-sm-5 align-self-center">
-                        <div style="text-align:center">
+                        <div style="text-align: center">
                                 <a class="btn btn-social-icon btn-google-plus" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
                                 <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
                                 <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
@@ -334,7 +338,19 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-         });
+            $("#mycarousel").carousel({interval: 2000});
+            $("#carousel-button").click(function(){
+                if($("#carousel-button").children("span").hasClass("fa-pause")){
+                    $("#mycarousel").carousel('pause');
+                    $("#carousel-button").children("span").removeClass("fa-pause");                   
+                    $("#carousel-button").children("span").addClass("fa-play");                   
+                }
+                else{
+                    $("#mycarousel").carousel('cycle');
+                    $("#carousel-button").children("span").removeClass("fa-play");                   
+                    $("#carousel-button").children("span").addClass("fa-pause");                   
+                }
+            });
+        });
     </script></body>
 </html>
